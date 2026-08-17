@@ -10,13 +10,13 @@ services:
     ports:
       - "5432:5432"
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U nso"]
+      test: ["CMD-SHELL", "pg_isready -U nso -d nso_calendar"]
       interval: 5s
       timeout: 5s
       retries: 5
 
   app:
-    image: paluigi/nso-calendar:0.2.2
+    image: paluigi/nso-calendar:0.2.3
     depends_on:
       db:
         condition: service_healthy
